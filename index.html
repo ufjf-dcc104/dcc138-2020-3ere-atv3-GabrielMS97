@@ -16,19 +16,40 @@
 
         skelly.addEventListener("load", terminouDeCarregar); //realiza um "agendamento" pra imagem ser desenhada quando terminar de carregar
         
-        ctx.fillStyle = "green";
-        ctx.fillRect(0,0, canvas.width, canvas.height);
-        let l = 1;
+        function desenhaFundo(){
+            ctx.fillStyle = "green";
+            ctx.fillRect(0,0, canvas.width, canvas.height);
+        }
+        let l = 2;
         let c = 1;
 
         function terminouDeCarregar(){
+            
+        }
+
+        requestAnimationFrame(passo);
+        let t0;
+        let dt;
+        function passo(t){
+            t0 = t0 ?? t;
+            dt = (t - t0)/1000;
+            desenhaFundo();
+
+            c = c + 10*dt; //cada número que multiplica dt indica a quantidade de FPS da animação
+            if(c>6){ 
+                c =0;
+            }
+
             ctx.drawImage(skelly,
             //sx, sy, sw, sh
-            c*64, l*64, 64, 64,
+            Math.floor(c)*64, l*64, 64, 64,
             //dx, dy, dw, dh
             0, 0, 64, 64 
             );
+            requestAnimationFrame(passo);
+            t0 = t; 
         }
+
     </script>
 </body>
 </html>
