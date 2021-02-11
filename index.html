@@ -20,7 +20,7 @@
         miranha.addEventListener("load", terminouDeCarregar);
 
         function desenhaFundo(){
-            ctx.fillStyle = "white";
+            ctx.fillStyle = "#ededed";
             ctx.fillRect(0,0, canvas.width, canvas.height);
         }
         let l = 2;
@@ -60,7 +60,7 @@
             //sx, sy, sw, sh
             Math.floor(quadro)*70, pose*71, 70, 71,
             //dx, dy, dw, dh
-            0, 0, 70, 71
+            0, -5, 70, 71
             );
             requestAnimationFrame(passo);
             t0 = t; 
