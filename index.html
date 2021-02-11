@@ -12,12 +12,15 @@
         const canvas = document.querySelector("canvas");
         const ctx = canvas.getContext("2d");
         const skelly = new Image();
+        const miranha = new Image();
         skelly.src = "assets/skelly.png"
+        miranha.src = "assets/miranha.png"
 
         skelly.addEventListener("load", terminouDeCarregar); //realiza um "agendamento" pra imagem ser desenhada quando terminar de carregar
-        
+        miranha.addEventListener("load", terminouDeCarregar);
+
         function desenhaFundo(){
-            ctx.fillStyle = "green";
+            ctx.fillStyle = "white";
             ctx.fillRect(0,0, canvas.width, canvas.height);
         }
         let l = 2;
@@ -25,28 +28,18 @@
 
         let pose = 0;
         let quadro = 0;
-        const POSES = [ // qmax: numero de poses em cada quadro // ex: quadro 0 tem 7 poses 
-            {qmax: 7, pv: 9},
+        const POSES = [ // qmax: numero de poses em cada quadro // ex: quadro 0 tem 7 poses // pv: velocidade da pose
+            {qmax: 9, pv: 9},
+            {qmax: 12, pv: 9}, 
+            {qmax: 11, pv: 9}, 
+            {qmax: 12, pv: 9}, 
+            {qmax: 11, pv: 9}, 
+            {qmax: 12, pv: 9}, 
+            {qmax: 12, pv: 9}, 
+            {qmax: 10, pv: 9}, 
             {qmax: 7, pv: 9}, 
-            {qmax: 7, pv: 9}, 
-            {qmax: 7, pv: 9}, 
-            {qmax: 8, pv: 9}, 
-            {qmax: 8, pv: 9}, 
-            {qmax: 8, pv: 9}, 
-            {qmax: 8, pv: 9}, 
-            {qmax: 9, pv: 9}, 
-            {qmax: 9, pv: 9}, 
-            {qmax: 9, pv: 9}, 
-            {qmax: 9, pv: 9}, 
-            {qmax: 6, pv: 9}, 
-            {qmax: 6, pv: 9}, 
-            {qmax: 6, pv: 9}, 
-            {qmax: 6, pv: 9}, 
-            {qmax: 13, pv: 27}, 
-            {qmax: 13, pv: 27}, 
-            {qmax: 13, pv: 27}, 
-            {qmax: 13, pv: 27}, 
-            {qmax: 6, pv: 9}
+            {qmax: 12, pv: 9},
+            {qmax: 10, pv: 9}
         ];
 
         function terminouDeCarregar(){
@@ -63,15 +56,16 @@
 
             quadro = (quadro >= POSES[pose].qmax - 1) ? 0 : quadro + POSES[pose].pv*dt; //cada número que multiplica dt indica a quantidade de FPS da animação // operador ternário
 
-            ctx.drawImage(skelly,
+            ctx.drawImage(miranha,
             //sx, sy, sw, sh
-            Math.floor(quadro)*64, pose*64, 64, 64,
+            Math.floor(quadro)*70, pose*71, 70, 71,
             //dx, dy, dw, dh
-            0, 0, 64, 64 
+            0, 0, 70, 71
             );
             requestAnimationFrame(passo);
             t0 = t; 
         }
+        
 
     </script>
 </body>
