@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo 02</title>
+    <title>DCC138 Exemplo 02</title>
 </head>
 <body>
-    <h1>Exemplo 02</h1>
+    <h1>DCC138 Exemplo 02</h1>
     <canvas></canvas>
+    <p>por Gabriel Santana (2021)</p>
     <script>
         const canvas = document.querySelector("canvas");
         const ctx = canvas.getContext("2d");
@@ -62,6 +63,11 @@
             //dx, dy, dw, dh
             0, -5, 70, 71
             );
+
+            ctx.fillStyle = "black";
+            ctx.font = "13.5px Impact";
+            ctx.fillText("Use as setas direita e esquerda para alterar as poses", 0,100);
+
             requestAnimationFrame(passo);
             t0 = t; 
         }
