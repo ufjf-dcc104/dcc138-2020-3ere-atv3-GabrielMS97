@@ -66,6 +66,20 @@
             t0 = t; 
         }
         
+        addEventListener("keydown", teclaPressionada)
+
+        function teclaPressionada(event){
+            switch(event.key){
+                case "ArrowRight":
+                    pose+=1;
+                    if(pose > 10) pose = 0;
+                    break;
+                case "ArrowLeft":
+                    pose-=1
+                    if(pose < 0) pose = 10;
+                    break;
+            }
+        }
 
     </script>
 </body>
